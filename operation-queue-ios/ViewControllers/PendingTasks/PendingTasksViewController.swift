@@ -11,6 +11,8 @@ import CoreData
 
 class PendingTasksViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
+    let taskQueue = OperationQueue()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,10 +22,12 @@ class PendingTasksViewController: UITableViewController, NSFetchedResultsControl
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        fetchedResultsController.fetchedObjects?.forEach() { [weak taskQueue] in
+            let operation = PendingTaskOperation(pendingTask: $0)
+            taskQueue?.addOperation(operation)
+        }
     }
 
     // MARK: - Table view data source
@@ -113,9 +117,8 @@ class PendingTasksViewController: UITableViewController, NSFetchedResultsControl
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
         case .update:
-        //    let cell = tableView.cellForRow(at: indexPath!) as? SubredditCell
-        //    cell?.configureCell(withTask: anObject as! Task)
-            break
+            let cell = tableView.cellForRow(at: indexPath!) as? TaskCell
+            cell?.configureWithTask(anObject as! Task)
             
         case .move:
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
