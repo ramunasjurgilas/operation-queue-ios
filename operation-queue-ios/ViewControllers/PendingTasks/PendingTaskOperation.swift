@@ -14,21 +14,14 @@ class PendingTaskOperation: Operation {
     var executionStart = Date()
     var currentIteration = 0
     var timer: Timer?
-    var thread: Thread?
     
-    deinit {
-        print("Deinit")
-    }
-    
-     init(pendingTask: Task) {
+    init(pendingTask: Task) {
         task = pendingTask
         super.init()
     }
     
     override func start() {
-        thread = Thread.current
         executionStart = Date()
-        print("Start TASK ")
         task.status = TaskStatus.executing.rawValue
         try? task.managedObjectContext?.save()
         isExecuting = true
@@ -37,22 +30,26 @@ class PendingTaskOperation: Operation {
     }
     
     override func main() {
-        print("start on thread:  -> \(Thread.current.debugDescription) ->" + Date().debugDescription)
+        print("start on:  -> " + Date().debugDescription)
         for i in currentIteration...10 {
+            DispatchQueue.main.async { [weak self] in
+                self?.task.duration = Int32((self?.executionStart.timeIntervalSinceNow)!) * -1
+            }
             currentIteration = i
             print("Iteration: \(currentIteration)")
             if isExecuting == false {
-               // count = i
+                // count = i
                 print("Is executing: \(i.description) " + isExecuting.description)
-               // isFinished = true
+                // isFinished = true
                 return
             }
             sleep(1)
         }
-        task.status = TaskStatus.completed.rawValue
-        task.duration = Int32(executionStart.timeIntervalSinceNow) * -1
-        try? task.managedObjectContext?.save()
-        
+        DispatchQueue.main.async { [weak self] in
+            self?.task.status = TaskStatus.completed.rawValue
+            self?.task.duration = Int32((self?.executionStart.timeIntervalSinceNow)!) * -1
+            try? self?.task.managedObjectContext?.save()
+        }
         print("end " + Date().debugDescription)
         isFinished = true
     }
@@ -60,7 +57,7 @@ class PendingTaskOperation: Operation {
     func postpone() {
         timer?.invalidate()
         task.status = TaskStatus.postponed.rawValue
-        print("Post pone: \(currentIteration) -> \(Thread.current.debugDescription)")
+        print("Post pone: \(currentIteration)")
         isExecuting = false
         isFinished = false
         timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(resume), userInfo: nil, repeats: false)
@@ -71,7 +68,7 @@ class PendingTaskOperation: Operation {
             print("Task is not postponed. Can not resume.")
         }
         timer?.invalidate()
-        print("resume operaiton \(Thread.current.debugDescription)")
+        print("resume operaiton")
         DispatchQueue.main.async { [weak self] in
             self?.task.status = TaskStatus.executing.rawValue
             try? self?.task.managedObjectContext?.save()

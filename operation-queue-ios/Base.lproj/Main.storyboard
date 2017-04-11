@@ -79,8 +79,6 @@
                     <navigationItem key="navigationItem" title="Pending Tasks" id="5Sg-1D-cwj"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jiG-jf-zTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="but-Xq-OMp"/>
-                <swipeGestureRecognizer direction="right" id="Emt-UQ-81y"/>
             </objects>
             <point key="canvasLocation" x="1856.8" y="-306.29685157421289"/>
         </scene>
