@@ -31,7 +31,7 @@ class PendingTaskOperation: Operation {
     
     override func main() {
         print("start on:  -> " + Date().debugDescription)
-        for i in currentIteration...10 {
+        for i in currentIteration...30 {
             DispatchQueue.main.async { [weak self] in
                 self?.task.duration = Int32((self?.executionStart.timeIntervalSinceNow)!) * -1
             }
@@ -60,7 +60,7 @@ class PendingTaskOperation: Operation {
         print("Post pone: \(currentIteration)")
         isExecuting = false
         isFinished = false
-        timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(resume), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(resume), userInfo: nil, repeats: false)
     }
     
     func resume() {

@@ -82,7 +82,7 @@
             </objects>
             <point key="canvasLocation" x="1856.8" y="-306.29685157421289"/>
         </scene>
-        <!--Completed Tasks View Controller-->
+        <!--Completed Tasks-->
         <scene sceneID="mIs-QR-MsW">
             <objects>
                 <tableViewController id="zu5-5N-aQ8" customClass="CompletedTasksViewController" customModule="operation_queue_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -148,7 +148,7 @@
                             <outlet property="delegate" destination="zu5-5N-aQ8" id="vbo-No-dS1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="idZ-p9-wZP"/>
+                    <navigationItem key="navigationItem" title="Completed Tasks" id="idZ-p9-wZP"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zz8-BV-j8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

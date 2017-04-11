@@ -11,8 +11,6 @@
 		3012306C1E9CAA3000458F01 /* TaskOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3012306B1E9CAA3000458F01 /* TaskOperationQueue.swift */; };
 		3012306E1E9CC3F700458F01 /* CompletedTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3012306D1E9CC3F700458F01 /* CompletedTasksViewController.swift */; };
 		3062614F1E9A9B7800DD6C02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3062614E1E9A9B7700DD6C02 /* AppDelegate.swift */; };
-		306261511E9A9B7800DD6C02 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306261501E9A9B7800DD6C02 /* FirstViewController.swift */; };
-		306261531E9A9B7800DD6C02 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306261521E9A9B7800DD6C02 /* SecondViewController.swift */; };
 		306261561E9A9B7800DD6C02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 306261541E9A9B7800DD6C02 /* Main.storyboard */; };
 		306261581E9A9B7800DD6C02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 306261571E9A9B7800DD6C02 /* Assets.xcassets */; };
 		3062615B1E9A9B7800DD6C02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 306261591E9A9B7800DD6C02 /* LaunchScreen.storyboard */; };
@@ -29,8 +27,6 @@
 		3012306D1E9CC3F700458F01 /* CompletedTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedTasksViewController.swift; sourceTree = "<group>"; };
 		3062614B1E9A9B7700DD6C02 /* operation-queue-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "operation-queue-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3062614E1E9A9B7700DD6C02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		306261501E9A9B7800DD6C02 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		306261521E9A9B7800DD6C02 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		306261551E9A9B7800DD6C02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		306261571E9A9B7800DD6C02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3062615A1E9A9B7800DD6C02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,8 +74,6 @@
 				306261671E9A9E3000DD6C02 /* Resources */,
 				306261621E9A9C5400DD6C02 /* Managers */,
 				3062614E1E9A9B7700DD6C02 /* AppDelegate.swift */,
-				306261501E9A9B7800DD6C02 /* FirstViewController.swift */,
-				306261521E9A9B7800DD6C02 /* SecondViewController.swift */,
 				306261541E9A9B7800DD6C02 /* Main.storyboard */,
 				306261571E9A9B7800DD6C02 /* Assets.xcassets */,
 				306261591E9A9B7800DD6C02 /* LaunchScreen.storyboard */,
@@ -216,7 +210,6 @@
 			files = (
 				3012306C1E9CAA3000458F01 /* TaskOperationQueue.swift in Sources */,
 				3012306A1E9C7E4A00458F01 /* PendingTaskOperation.swift in Sources */,
-				306261531E9A9B7800DD6C02 /* SecondViewController.swift in Sources */,
 				3012306E1E9CC3F700458F01 /* CompletedTasksViewController.swift in Sources */,
 				3062614F1E9A9B7800DD6C02 /* AppDelegate.swift in Sources */,
 				306261791E9AA01B00DD6C02 /* PendingTasksViewController.swift in Sources */,
@@ -224,7 +217,6 @@
 				3062617E1E9AA5BB00DD6C02 /* TaskCell.swift in Sources */,
 				306261741E9A9F2700DD6C02 /* CoreData.xcdatamodeld in Sources */,
 				306261661E9A9DD100DD6C02 /* CoreDataManager.swift in Sources */,
-				306261511E9A9B7800DD6C02 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
