@@ -76,11 +76,88 @@
                             <outlet property="delegate" destination="iby-JQ-7uY" id="tdh-IB-0Zx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Pending Tasks" id="5Sg-1D-cwj"/>
+                    <navigationItem key="navigationItem" title="Pending Tasks" id="5Sg-1D-cwj">
+                        <barButtonItem key="rightBarButtonItem" title="Keywords" id="em4-9W-FjU">
+                            <connections>
+                                <segue destination="h4K-Hl-deM" kind="popoverPresentation" popoverAnchorBarButtonItem="em4-9W-FjU" id="f8l-iG-VQT">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jiG-jf-zTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1856.8" y="-306.29685157421289"/>
+        </scene>
+        <!--Keywords-->
+        <scene sceneID="vq4-n0-ZQW">
+            <objects>
+                <viewController id="Gqn-F4-g5w" customClass="KeywordsViewController" customModule="operation_queue_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KmG-Xk-V8n"/>
+                        <viewControllerLayoutGuide type="bottom" id="ms5-YF-uWQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qml-n0-H4U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mIT-tt-aI7">
+                                <rect key="frame" x="16" y="72" width="343" height="293"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="File name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7f2-YK-FhS">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pOy-JL-P1v">
+                                        <rect key="frame" x="0.0" y="45" width="343" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbg-i9-4I4">
+                                        <rect key="frame" x="0.0" y="85" width="343" height="30"/>
+                                        <state key="normal" title="Select File"/>
+                                        <connections>
+                                            <action selector="didClickPickDocument:" destination="Gqn-F4-g5w" eventType="touchUpInside" id="cCD-Qr-7br"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="keyword1,keyword2" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eUE-bk-Vla">
+                                        <rect key="frame" x="0.0" y="125" width="343" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M66-s8-8Sb">
+                                        <rect key="frame" x="0.0" y="263" width="343" height="30"/>
+                                        <state key="normal" title="Upload"/>
+                                        <connections>
+                                            <action selector="didClickUploadButton:" destination="Gqn-F4-g5w" eventType="touchUpInside" id="vGV-Fq-Jam"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="mIT-tt-aI7" secondAttribute="trailing" id="3ql-bI-NJ1"/>
+                            <constraint firstItem="mIT-tt-aI7" firstAttribute="top" secondItem="KmG-Xk-V8n" secondAttribute="bottom" constant="8" id="Kw2-Zi-Tqy"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="mIT-tt-aI7" secondAttribute="leading" id="Yte-pY-LLt"/>
+                            <constraint firstItem="ms5-YF-uWQ" firstAttribute="top" secondItem="mIT-tt-aI7" secondAttribute="bottom" priority="700" constant="302" id="Zo3-JU-rTW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Keywords" id="qke-jS-pr2"/>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="pOy-JL-P1v" id="C8f-Jv-DxH"/>
+                        <outlet property="fileNameTextField" destination="7f2-YK-FhS" id="ULe-gu-aoq"/>
+                        <outlet property="keywordsTextView" destination="eUE-bk-Vla" id="XQq-0w-dJ6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EnX-JT-90i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3636" y="-306.29685157421289"/>
         </scene>
         <!--Completed Tasks-->
         <scene sceneID="mIs-QR-MsW">
@@ -210,6 +287,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9AZ-SU-8L9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="917.60000000000002" y="351.27436281859076"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wgK-00-e1j">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h4K-Hl-deM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="F1P-zO-nvj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Gqn-F4-g5w" kind="relationship" relationship="rootViewController" id="Llu-7M-TXT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C9d-rF-xOC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2696.8000000000002" y="-306.29685157421289"/>
         </scene>
     </scenes>
 </document>
