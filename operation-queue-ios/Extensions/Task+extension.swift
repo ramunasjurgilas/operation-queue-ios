@@ -9,32 +9,38 @@
 import Foundation
 
 enum TaskStatus: Int16 {
-    case pending, executing, completed
+    case pending, executing, completed, postponed
     
     func text() -> String {
         switch self {
         case .pending: return "Pending"
         case .executing: return "Executing"
+        case .postponed: return "Posponed"
         case .completed: return "Completed"
         }
     }
 }
 
+extension Collection where Iterator.Element == TaskStatus {
+    
+    func predicate() -> NSPredicate? {
+        let format = map() { "status = \($0.rawValue)" }.joined(separator: " OR ")
+        return NSPredicate(format: format, argumentArray: nil)
+    }
+}
+
+
 extension Task {
     
     static func fill() {
         let context = CoreDataManager.shared.persistentContainer.viewContext
-        for _ in 0...10 {
+        for i in 0...10 {
             let task = Task(context: context)
             task.status = TaskStatus.pending.rawValue
-            task.iterations = 30000
+            task.name = "Task \(i)"
         }
         try? context.save()
-    }
-    
-    func iterationAsText() -> String? {
-        return "\(currentIteration) of \(iterations)"
-    }
+    }    
     
     func statusAsText() -> String? {
         if let status = TaskStatus(rawValue: status) {

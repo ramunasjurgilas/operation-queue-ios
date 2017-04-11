@@ -1,28 +1,15 @@
 //
-//  PendingTasksViewController.swift
+//  CompletedTasksViewController.swift
 //  operation-queue-ios
 //
-//  Created by Ramunas Jurgilas on 2017-04-09.
+//  Created by Ramunas Jurgilas on 2017-04-11.
 //  Copyright © 2017 Ramūnas Jurgilas. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class PendingTasksViewController: UITableViewController, NSFetchedResultsControllerDelegate, TaskCellDelegate {
-
-    let taskQueue = TaskOperationQueue()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-       // fetchedResultsController.fetchedObjects?.forEach() { [weak taskQueue] in
-        //    let operation = PendingTaskOperation(pendingTask: $0)
-        //    taskQueue?.addOperation(operation)
-       // }
-    }
+class CompletedTasksViewController: UITableViewController, NSFetchedResultsControllerDelegate, TaskCellDelegate {
 
     // MARK: - Table view data source
     
@@ -49,7 +36,7 @@ class PendingTasksViewController: UITableViewController, NSFetchedResultsControl
         (cell as? TaskCell)?.configureWithTask(task, delegate: self)
         return cell
     }
-
+    
     // MARK: - Fetched results controller
     
     var fetchedResultsController: NSFetchedResultsController<Task> {
@@ -64,7 +51,7 @@ class PendingTasksViewController: UITableViewController, NSFetchedResultsControl
         
         // Edit the sort key as appropriate.
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.predicate = [TaskStatus.pending, TaskStatus.executing, TaskStatus.postponed].predicate()
+        fetchRequest.predicate = [TaskStatus.completed].predicate()
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         let moc = CoreDataManager.shared.persistentContainer.viewContext
@@ -111,7 +98,7 @@ class PendingTasksViewController: UITableViewController, NSFetchedResultsControl
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
         case .update:
-            updateVisibleRows(fot: anObject as! Task)
+            break
             
         case .move:
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
@@ -121,26 +108,22 @@ class PendingTasksViewController: UITableViewController, NSFetchedResultsControl
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
     }
-    
+
     // MARK: - TaskCellDelegate
     
     func didSwipeLeft(_ task: Task) {
-        taskQueue.postponTask(task)
+        moveBackToPending(task)
     }
     
     func didSwipeRight(_ task: Task) {
-        taskQueue.executeTask(task)
+        moveBackToPending(task)
     }
-    
+
     // MARK: - Private Methods
     
-    func updateVisibleRows(fot task: Task) {
-        for cell in tableView.visibleCells {
-            if let taskCell = cell as? TaskCell,
-                taskCell.task == task {
-                taskCell.configureWithTask(task, delegate: self)
-                return
-            }
-        }
+    private func moveBackToPending(_ task: Task) {
+        task.status = TaskStatus.pending.rawValue
+        task.duration = 0
+        try? task.managedObjectContext?.save()
     }
 }

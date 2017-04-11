@@ -16,7 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-    //    Task.fill()
+        
+        if UserDefaults.standard.bool(forKey: "filled") == false {
+            Task.fill()
+            UserDefaults.standard.set(true, forKey: "filled")
+        }
         return true
     }
 

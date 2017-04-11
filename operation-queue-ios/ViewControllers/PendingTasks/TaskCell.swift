@@ -26,16 +26,19 @@ class TaskCell: UITableViewCell {
         self.delegate = delegate
         self.task = task
         nameLabel.text = task.name
-        iterationLabel.text = task.iterationAsText()
+        iterationLabel.text = task.duration.description
         statusLabel.text = task.statusAsText()
         
-        let leftGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeLeft))
-        leftGesture.direction = .left
-        addGestureRecognizer(leftGesture)
-        removeGestureRecognizer(leftGesture)
-        let rightGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeRight))
-        rightGesture.direction = .right
-        addGestureRecognizer(rightGesture)
+        if gestureRecognizers == nil {
+            
+            let leftGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeLeft))
+            leftGesture.direction = .left
+            addGestureRecognizer(leftGesture)
+            
+            let rightGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeRight))
+            rightGesture.direction = .right
+            addGestureRecognizer(rightGesture)
+        }
     }
     
     func didSwipeLeft(_ sender: AnyObject) {
