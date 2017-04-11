@@ -63,6 +63,10 @@ class PendingTaskOperation: Operation {
         }
     }
     
+    func resume() {
+        print("resume operaiton")
+    }
+    
     fileprivate var _executing: Bool = false
     override var isExecuting: Bool {
         get {

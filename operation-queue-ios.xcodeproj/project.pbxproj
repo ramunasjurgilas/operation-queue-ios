@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3012306A1E9C7E4A00458F01 /* PendingTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301230691E9C7E4A00458F01 /* PendingTaskOperation.swift */; };
+		3012306C1E9CAA3000458F01 /* TaskOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3012306B1E9CAA3000458F01 /* TaskOperationQueue.swift */; };
 		3062614F1E9A9B7800DD6C02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3062614E1E9A9B7700DD6C02 /* AppDelegate.swift */; };
 		306261511E9A9B7800DD6C02 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306261501E9A9B7800DD6C02 /* FirstViewController.swift */; };
 		306261531E9A9B7800DD6C02 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306261521E9A9B7800DD6C02 /* SecondViewController.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		301230691E9C7E4A00458F01 /* PendingTaskOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingTaskOperation.swift; sourceTree = "<group>"; };
+		3012306B1E9CAA3000458F01 /* TaskOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskOperationQueue.swift; sourceTree = "<group>"; };
 		3062614B1E9A9B7700DD6C02 /* operation-queue-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "operation-queue-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3062614E1E9A9B7700DD6C02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		306261501E9A9B7800DD6C02 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				306261781E9AA01B00DD6C02 /* PendingTasksViewController.swift */,
 				3062617D1E9AA5BB00DD6C02 /* TaskCell.swift */,
 				301230691E9C7E4A00458F01 /* PendingTaskOperation.swift */,
+				3012306B1E9CAA3000458F01 /* TaskOperationQueue.swift */,
 			);
 			path = PendingTasks;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3012306C1E9CAA3000458F01 /* TaskOperationQueue.swift in Sources */,
 				3012306A1E9C7E4A00458F01 /* PendingTaskOperation.swift in Sources */,
 				306261531E9A9B7800DD6C02 /* SecondViewController.swift in Sources */,
 				3062614F1E9A9B7800DD6C02 /* AppDelegate.swift in Sources */,
@@ -341,6 +345,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TA7TSBJ7ZW;
 				INFOPLIST_FILE = "operation-queue-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lt.rj.operation-queue-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -354,6 +359,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = TA7TSBJ7ZW;
 				INFOPLIST_FILE = "operation-queue-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lt.rj.operation-queue-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";

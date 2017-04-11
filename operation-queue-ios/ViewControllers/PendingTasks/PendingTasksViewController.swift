@@ -9,25 +9,19 @@
 import UIKit
 import CoreData
 
-class PendingTasksViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class PendingTasksViewController: UITableViewController, NSFetchedResultsControllerDelegate, TaskCellDelegate {
 
-    let taskQueue = OperationQueue()
+    let taskQueue = TaskOperationQueue()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        fetchedResultsController.fetchedObjects?.forEach() { [weak taskQueue] in
-            let operation = PendingTaskOperation(pendingTask: $0)
-            taskQueue?.addOperation(operation)
-        }
+       // fetchedResultsController.fetchedObjects?.forEach() { [weak taskQueue] in
+        //    let operation = PendingTaskOperation(pendingTask: $0)
+        //    taskQueue?.addOperation(operation)
+       // }
     }
 
     // MARK: - Table view data source
@@ -52,7 +46,7 @@ class PendingTasksViewController: UITableViewController, NSFetchedResultsControl
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath)
         let task = self.fetchedResultsController.object(at: indexPath)
-        (cell as? TaskCell)?.configureWithTask(task)
+        (cell as? TaskCell)?.configureWithTask(task, delegate: self)
         return cell
     }
 
@@ -118,7 +112,7 @@ class PendingTasksViewController: UITableViewController, NSFetchedResultsControl
             tableView.deleteRows(at: [indexPath!], with: .fade)
         case .update:
             let cell = tableView.cellForRow(at: indexPath!) as? TaskCell
-            cell?.configureWithTask(anObject as! Task)
+            cell?.configureWithTask(anObject as! Task, delegate: self)
             
         case .move:
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
@@ -127,5 +121,15 @@ class PendingTasksViewController: UITableViewController, NSFetchedResultsControl
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
+    }
+    
+    // MARK: - TaskCellDelegate
+    
+    func didSwipeLeft(_ task: Task) {
+        taskQueue.postponTask(task)
+    }
+    
+    func didSwipeRight(_ task: Task) {
+        taskQueue.executeTask(task)
     }
 }

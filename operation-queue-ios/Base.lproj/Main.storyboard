@@ -14,7 +14,7 @@
         <scene sceneID="nvN-sV-2Cy">
             <objects>
                 <tableViewController id="iby-JQ-7uY" customClass="PendingTasksViewController" customModule="operation_queue_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Hja-ww-elA">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Hja-ww-elA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,6 +53,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <gestureRecognizers/>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -67,7 +68,6 @@
                                     <outlet property="iterationLabel" destination="MYn-XB-XaE" id="KhT-v8-WZh"/>
                                     <outlet property="nameLabel" destination="pTu-Sp-K5V" id="Y1D-yP-i1b"/>
                                     <outlet property="statusLabel" destination="k6L-9u-aAa" id="cN1-Ju-ank"/>
-                                    <outletCollection property="gestureRecognizers" destination="Emt-UQ-81y" appends="YES" id="a2H-Sb-aul"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -79,6 +79,7 @@
                     <navigationItem key="navigationItem" title="Pending Tasks" id="5Sg-1D-cwj"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jiG-jf-zTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="but-Xq-OMp"/>
                 <swipeGestureRecognizer direction="right" id="Emt-UQ-81y"/>
             </objects>
             <point key="canvasLocation" x="1856.8" y="-306.29685157421289"/>
