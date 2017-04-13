@@ -55,6 +55,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04E13559A447351A008EF51A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3012306F1E9CED0F00458F01 /* Keywords */ = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +75,7 @@
 			children = (
 				3062614D1E9A9B7700DD6C02 /* operation-queue-ios */,
 				3062614C1E9A9B7700DD6C02 /* Products */,
+				04E13559A447351A008EF51A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,6 +194,9 @@
 						DevelopmentTeam = TA7TSBJ7ZW;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};

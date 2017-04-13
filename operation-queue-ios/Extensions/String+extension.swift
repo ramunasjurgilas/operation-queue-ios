@@ -22,4 +22,12 @@ extension String {
         }
         return result
     }
+    
+    func removeKeywords(_ keywords: [String]) -> String {
+        var result = self
+        keywords.forEach() {
+            result = result.replacingOccurrences(of: $0, with: "")
+        }
+        return result
+    }
 }
